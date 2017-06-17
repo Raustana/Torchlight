@@ -80,3 +80,7 @@ With the optimization to small-sized grids and weighting towards the center squa
 However, this changes it from a complete A.I. to a merely fast one, and one that cannot effectively find the solutions at that. Better results could be found by iterating randomly over the set of solutions; definitive results could be found by iterating over all solutions. In short, we sacrificed completeness for speed, which unfortunately fails the criteria we set for the A.I.
 
 One of the reasons we had a problem with attempting submodular optimization of the problem is that submodular optimization is NP-Hard. Each attempt at making two or more grids that are smaller than the nXn grid (but still covering the same area) requires just as much thought and calculation as does simply iterating over the whole nCr combinations.
+
+## References:
+
+https://las.inf.ethz.ch/files/krause12survey.pdf (Paper on Submodular Optimization.)
