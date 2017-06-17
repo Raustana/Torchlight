@@ -5,8 +5,8 @@ title: Final Report
 
 ## Video of Torchbearer in action:
 
-[![Torchbearer Video](https://img.youtube.com/vi/stu_IQTNVf8/0.jpg)]
-(https://www.youtube.com/watch?v=stu_IQTNVf8)
+![Torchbearer Video](https://img.youtube.com/vi/stu_IQTNVf8/0.jpg)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/stu_IQTNVf8" frameborder="0" allowfullscreen></iframe>
 
 
 ## Project Summary:
@@ -16,7 +16,7 @@ The Torchbearer AI assists players in placing down torches to increase the light
 - A simple example of running our AI on a 6x6 square will place the torch in the center, therefore, it only costs one torch instead to place one torch on (1, 1), which requires at least two torches.
 - ![image of single torch](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/7x7GridSingleTorch.png)
 - A simple example of running our AI on 9x9 area that requires at least two torches.
-- ![image of two torches](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/10x10GirdTwoTorch.PNG)
+- ![image of two torches](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/10x10GirdTwoTorch.png)
 - Run the A.I. on grids with walls, the idea we mentioned previous has been achieved to find an optimal solution by our AI.
 - ![image of walled grid](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/WalledGrid.PNG)
 - The non-uniform patterns are hard to determine how many torches can form the optimal solution; thus, our AI might take a longer time than the pattern before but our AI still can solve the problem we argued in the status report as following.
@@ -44,18 +44,18 @@ In order to find all optimal solutions, we use brute-force method in our AI to m
 - Then, the agent places a torch at its current position (3, 3), in the Minecraft world.
 - After placing the torch, the agent updates what the new light levels of its surroundings should be.
   - The coordinate with the torch updates its number in **"currentList"** to 14 (**"initialNum"**).
-  - ![image showing that update here](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/Placement6x6WithSort_1.PNG)
+  - ![image showing that update here](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/Placement6x6WithSort_1.png)
   - For each coordinate in currentList that is not that coordinate, they update based on their taxicab distance away from the torch. This distance (**"tryNum"**) is equal to their difference in x coordinates + their difference in z coordinates.
   - ![image showing taxicab distance from Wikipedia article goes here](https://upload.wikimedia.org/wikipedia/commons/0/08/Manhattan_distance.svg)
   - An example of taxicab distance. The red, blue, and yellow lines all travel the same distance (12), while the green line is the unique solution that goes directly from point A to point B (approximately 8.49). (Image By User:Psychonaut - Created by User:Psychonaut with XFig, Public Domain, https://commons.wikimedia.org/w/index.php?curid=731390 )
   - The new light level of that specific coordinate is equal to **"initialNum - tryNum"** unless said light level would be lower than it currently is.
-  - ![image showing new light levels goes here](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/Updated6x6_1.PNG)
+  - ![image showing new light levels goes here](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/Updated6x6_1.png)
   - We get one solution! Cheers!
 - Then, the AI will try the second combination which is (3, 4), in the Minecraft world.
     - It is the **"currentList[2][3]"** in our AI.
-    - ![image showing that second try here](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/Placement6x6WithSort_2.PNG)
+    - ![image showing that second try here](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/Placement6x6WithSort_2.png)
     - And after the update, the whole area will be lighted up like this.
-    - ![image showing second new light levels goes here](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/Updated6x6_2.PNG)
+    - ![image showing second new light levels goes here](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/Updated6x6_2.png)
     - Another solution! Cheers!
 - After placing all of its torches within the combination it is testing, the agent then "scores" the combination based on how many squares remain in the grid that have a light level of 7 or below. This score is named **"dark"**.
 - The combination is then placed into a dictionary **"scoredList"**, which has a variety of numeric keys and a list value. The combination is appended to the list with key **"dark"**; if that key does not exist, a new key is created with its value containing the combination.
