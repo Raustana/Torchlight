@@ -5,22 +5,22 @@ title: Final Report
 
 ## Video of Torchbearer in action:
 
+[![Torchbearer Video](https://img.youtube.com/vi/stu_IQTNVf8/0.jpg)]
+(https://www.youtube.com/watch?v=stu_IQTNVf8)
 
 
 ## Project Summary:
 
-The Torchbearer AI now has finished with our goal to help players place down torches to increase the light level of their surroundings. Our AI knows an optimal solution is n-coordinate large; thus it only tries the n-large combinations. We also create an sort algorithms to sort those combinations so that our AI tries the combinations those are close the center( the center can light up more area in a nXn size area ) first then tries the outside combinations.
+The Torchbearer AI assists players in placing down torches to increase the light level of their surroundings. Our AI knows an optimal solution is n-coordinate large; thus it only tries the n-large combinations. We also create an sort algorithms to sort those combinations so that our AI tries the combinations those are close the center (the center can light up more area in a nXn size area ) first then tries the outside combinations.
 
 - A simple example of running our AI on a 6x6 square will place the torch in the center, therefore, it only costs one torch instead to place one torch on (1, 1), which requires at least two torches.
-- ![image of single torch](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/7x7GridSingleTorch.PNG)
+- ![image of single torch](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/7x7GridSingleTorch.png)
 - A simple example of running our AI on 9x9 area that requires at least two torches.
 - ![image of two torches](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/10x10GirdTwoTorch.PNG)
 - Run the A.I. on grids with walls, the idea we mentioned previous has been achieved to find an optimal solution by our AI.
 - ![image of walled grid](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/WalledGrid.PNG)
 - The non-uniform patterns are hard to determine how many torches can form the optimal solution; thus, our AI might take a longer time than the pattern before but our AI still can solve the problem we argued in the status report as following.
-- ![image of odd grid](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/LGird3Torches.PNG)
-
-Our AI's not just tries to find just one solution but also as much as possible; thus, we can provide more choice to players.
+- ![image of odd grid](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/LGird3Torches.png)
 
 ## Approach:
 
@@ -68,11 +68,10 @@ In order to find all optimal solutions, we use brute-force method in our AI to m
 - ![image for scoredList goes here](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/scores.PNG)
 - ![in-game image goes here](https://raw.githubusercontent.com/Raustana/Torchlight/master/docs/images/InGame.PNG)
 
-## Evaluation
+## Evaluation:
 
-Here is evaluation goals for our AI:
+With the optimization to small-sized grids and weighting towards the center squares, the speed aspect of testing has dramatically improved. Now the A.I. no longer iterates over the entire combinatorial grid looking for a solution; instead, it looks for the first n^2 solutions using the center as the base, as opposed to the nCr amount of solutions that would arise (not a problem at n = 7, where r would then equal 1 and thus the set of possible solutions equals 49; definitely a problem at n = 10, where r would then equal 3 and the set of possible solutions equals 161700.)
 
-- Can the A.I. find all solutions for the small and medium map?
+However, this changes it from a complete A.I. to a merely fast one, and one that cannot effectively find the solutions at that. Better results could be found by iterating randomly over the set of solutions; definitive results could be found by iterating over all solutions. In short, we sacrificed completeness for speed, which unfortunately fails the criteria we set for the A.I.
 
-    - As we showed in the Approach part, our AI gives the result that [(3, 3), (3, 4), (4, 3), (4, 4)] are the optimal solutions and according our tests the AI truly find all solutions.
-    - We also tested on a 10x10 map that requires two torches, and the A.I. gives the correct answer.
+One of the reasons we had a problem with attempting submodular optimization of the problem is that submodular optimization is NP-Hard. Each attempt at making two or more grids that are smaller than the nXn grid (but still covering the same area) requires just as much thought and calculation as does simply iterating over the whole nCr combinations.
