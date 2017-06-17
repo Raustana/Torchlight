@@ -3,6 +3,11 @@ layout: default
 title: Final Report
 ---
 
+<!---
+Video portion and Evaluation done by Lucas Amutan
+Summary and Approach done by Ruidong
+-->
+
 ## Video of Torchbearer in action:
 
 ![Torchbearer Video](https://img.youtube.com/vi/stu_IQTNVf8/0.jpg)
